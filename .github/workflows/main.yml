@@ -1,0 +1,25 @@
+name: Deploy to Website
+
+on:
+  push:
+      branches:
+        - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H boheemia.ee >> ~/.ssh/known_hosts
+      - name: Deploy to server
+        run: |         
+          # Transfer built files and server files
+          rsync -avz --include='index.html' --include='styles.css' --include='dot.png' --exclude='*' ./ virt65914@boheemia.ee:domeenid/www.boheemia.ee/
