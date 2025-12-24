@@ -22,4 +22,4 @@ jobs:
       - name: Deploy to server
         run: |         
           # Transfer built files and server files
-          rsync -avz --include='index.html' --include='styles.css' --include='dot.png' --exclude='*' ./ virt65914@boheemia.ee:domeenid/www.boheemia.ee/
+          rsync -avz --include='index.html' --include='styles.css' --include='dot.png' --exclude='*' -O ./ virt65914@boheemia.ee:domeenid/www.boheemia.ee/
