@@ -1,0 +1,56 @@
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+}
+
+.boh__dither-gradient-circle {
+  position: relative;
+  border-radius: 5rem;
+  width: 10rem;
+  height: 10rem;
+  background:  linear-gradient(
+    rgba(0, 0, 0, 1),
+    rgba(255, 255, 255, 0)
+  );
+
+  &::after {
+    position: absolute;
+    border-radius: 5rem;
+    width: 10rem;
+    height: 10rem;
+    content: '';
+    background: url(./dot.png) repeat;
+  }
+}
+
+.boh__overview-container {
+  margin-left: 1.5rem;
+}
+
+h1 {
+  margin: 0 0 .75rem 0;
+}
+
+ul {
+  margin: 0;
+}
+
+a {
+  font-family: monospace;
+  text-decoration: none;
+  color: black;
+
+  &:active,
+  &:hover {
+    color: black;
+    font-weight: 800;
+    cursor: pointer;
+  }
+}
+
+p {
+  margin: .75rem 0 .5rem 0;
+}
